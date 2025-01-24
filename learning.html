@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CFA Institute - VR Concept</title>
+    <meta name="description" content="VR & Augmented Reality Concepts - Praveen Muthu">
+    <script src="js/aframe.min.js"></script>
+    <script src="js/aframe-animation-component.min.js"></script>
+    <script src="js/aframe-event-set-component.min.js"></script>
+    <script src="js/aframe-layout-component.min.js"></script>
+    <script src="js/aframe-template-component.min.js"></script>
+    <script src="components/set-image.js"></script>
+
+    <script>
+      // Function to navigate to another page
+      function navigateToPage(url) {
+        window.location.href = url;
+      }
+    </script>
+</head>
+<body>
+<a-scene>
+    <!-- Assets -->
+    <a-assets>
+        <img id="ui-home" crossorigin="anonymous" src="assets/backgrounds/ui.png">
+        <img id="home" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="learning" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="learning-privateMkts" crossorigin="anonymous" src="assets/backgrounds/conference-island.jpg">
+        <img id="learning-privateEquity" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="learning-esgInvesting" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="learning-dataScience" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="learning-climateRisk" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="learning-altInvestments" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="vzshow" crossorigin="anonymous" src="assets/backgrounds/insideConference-bg.jpg">
+
+        <audio id="click-sound" crossorigin="anonymous" src="assets/audio/click.ogg"></audio>
+        
+        <!-- Button thumbs -->
+        <img id="home-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-home.png">
+        <img id="learning-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning.png">
+        <img id="learning-privateMkts-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning-privateMkts.png">
+        <img id="learning-privateEquity-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning-privateEquity.png">
+        <img id="learning-esgInvesting-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning-esgInvesting.png">
+        <img id="learning-dataScience-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning-dataScience.png">
+        <img id="learning-climateRisk-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning-climateRisk.png">
+        <img id="learning-altInvestments-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning-altInvestments.png">
+        <img id="vzshow-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-confShow.png">
+    </a-assets>
+
+    <!-- Background Image -->
+    <a-sky id="image-360" src="#home" rotation="0 210 0"></a-sky>
+
+    <!-- Curved UI -->
+    <a-curvedimage id="curvedImg" src="#ui-home" radius="5" theta-length="360" height="15" scale="1 1 1"></a-curvedimage>
+
+    <!-- Image Links -->
+    <a-entity id="links" layout="type: line; margin: 1.7" position="-3 -1.8 -9">
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #home-thumb" 
+                  onclick="navigateToPage('index.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-thumb" 
+                  onclick="navigateToPage('learning.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-privateMkts-thumb" 
+                  onclick="navigateToPage('learning-privateMkts.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-privateEquity-thumb" 
+                  onclick="navigateToPage('learning.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-esgInvesting-thumb" 
+                  onclick="navigateToPage('learning.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-dataScience-thumb" 
+                  onclick="navigateToPage('learning.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-climateRisk-thumb" 
+                  onclick="navigateToPage('slearning.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-altInvestments-thumb" 
+                  onclick="navigateToPage('learning.html')"></a-entity>
+    </a-entity>
+
+    <a-entity id="vzshow-link" layout="type: line; margin: 1.7" position="24 -1.1 11">
+        <a-entity class="slink" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #vzshow-thumb" 
+                  onclick="navigateToPage('confShow.html')"></a-entity>
+    </a-entity>
+
+    <!-- Camera and Cursor -->
+    <a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: red"
+          event-set__2="_event: mouseleave; color: red"
+          fuse="true"
+          raycaster="objects: .link, .slink"></a-cursor>
+    </a-entity>
+</a-scene>
+</body>
+</html>

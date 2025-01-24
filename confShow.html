@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CFA Institute - VR Concept</title>
+    <meta name="description" content="VR & Augmented Reality Concepts - Praveen Kumar Muthu">
+    <script src="js/aframe.min.js"></script>
+    <script src="js/aframe-animation-component.min.js"></script>
+    <script src="js/aframe-event-set-component.min.js"></script>
+    <script src="js/aframe-layout-component.min.js"></script>
+    <script src="js/aframe-template-component.min.js"></script>
+    <script src="components/set-image.js"></script>
+
+    <script>
+      // Function to navigate to another page
+      function navigateToPage(url) {
+        window.location.href = url;
+      }
+    </script>
+</head>
+<body>
+<a-scene>
+    <!-- Assets -->
+    <a-assets>
+        <!--img id="ui-home" crossorigin="anonymous" src="assets/backgrounds/ui-home.png"-->
+        <img id="home" crossorigin="anonymous" src="assets/backgrounds/insideConference-bg.jpg">
+        <img id="learning" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="conferences" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="certifications" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="virtualAssistant" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="settings" crossorigin="anonymous" src="assets/backgrounds/learning-bg.jpg">
+        <img id="vzshow" crossorigin="anonymous" src="assets/backgrounds/insideConference-bg.jpg">
+
+        <audio id="click-sound" crossorigin="anonymous" src="assets/audio/click.ogg"></audio>
+        
+        <!-- Button thumbs -->
+        <img id="home-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-home.png">
+        <img id="learning-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-learning.png">
+        <img id="conferences-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-conferences.png">
+        <img id="certifications-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-certifications.png">
+        <img id="virtualAssistant-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-virtualAssistant.png">
+        <img id="settings-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-settings.png">
+        <!--img id="vzshow-thumb" crossorigin="anonymous" src="assets/thumbs/thumb-vzShow.png" -->
+    </a-assets>
+
+    <!-- Background Image -->
+    <a-sky id="image-360" src="#home" rotation="0 -90 0"></a-sky>
+
+    <!-- Curved UI -->
+    <!--a-curvedimage id="curvedImg" src="#ui-home" radius="5" theta-length="360" height="15" scale="1.2 1.2 1.2"></a-curvedimage-->
+
+    <!-- Image Links -->
+    <a-entity id="links" layout="type: line; margin: 1.7" position="-4 -6 -9">
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #home-thumb" 
+                  onclick="navigateToPage('index.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #learning-thumb" 
+                  onclick="navigateToPage('learning.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #conferences-thumb" 
+                  onclick="navigateToPage('conferences.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #certifications-thumb" 
+                  onclick="navigateToPage('certifications.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #virtualAssistant-thumb" 
+                  onclick="navigateToPage('assistant.html')"></a-entity>
+        <a-entity class="link" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #settings-thumb" 
+                  onclick="navigateToPage('settings.html')"></a-entity>
+    </a-entity>
+
+    <a-entity id="vzshow-link" layout="type: line; margin: 1.7" position="24 -1.1 11">
+        <a-entity class="slink" geometry="primitive: box; height: 1.2; width: 1.2; depth: 0.2" 
+                  material="shader: flat; src: #vzshow-thumb" 
+                  onclick="navigateToPage('confShow.html')"></a-entity>
+    </a-entity>
+
+    <!-- Camera and Cursor -->
+    <a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: #497AFF"
+          event-set__2="_event: mouseleave; color: #497AFF"
+          fuse="true"
+          raycaster="objects: .link, .slink"></a-cursor>
+    </a-entity>
+</a-scene>
+</body>
+</html>
